@@ -1,3 +1,3 @@
-<?php 
- error_log("Hola!!!!!!", 0);
+<?php
+ error_log(json_encode ($_POST), 0);
 ?>
