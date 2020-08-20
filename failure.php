@@ -1,66 +1,5 @@
 <!DOCTYPE html>
 <html class="supports-animation supports-columns svg no-touch no-ie no-oldie no-ios supports-backdrop-filter as-mouseuser" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <?php
-        // SDK de Mercado Pago
-        require __DIR__ .  '/vendor/autoload.php';
-
-        // Agrega credenciales
-        MercadoPago\SDK::setAccessToken('APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398');
-        MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
-
-        // Crea un objeto de preferencia
-        $preference = new MercadoPago\Preference();
-
-        // Crea un ítem en la preferencia
-        $item = new MercadoPago\Item();
-        $item->title = $_POST['title'];
-        $item->quantity = 1;
-        $item->unit_price = $_POST['price'];
-        $item->id = "1234";
-        $item->description = "Dispositivo móvil de Tienda e-commerce";
-        $item->picture_url = $_POST['img'];
-        
-        $payer = new MercadoPago\Payer();
-        $payer->name = "Lalo";
-        $payer->surname = "Landa";
-        $payer->email = "test_user_63274575@testuser.com";
-        $payer->date_created = "2018-06-02T12:58:41.425-04:00";
-        $payer->phone = array(
-            "area_code" => "11",
-            "number" => "22223333"
-        );
-        $payer->identification = array(
-            "type" => "DNI",
-            "number" => "12345678"
-        );
-        $payer->address = array(
-            "street_name" => "False",
-            "street_number" => "123",
-            "zip_code" => "1111"
-        );
-
-        $preference->back_urls = array(
-            "success" => "https://isidro-grvt-mp-commerce-php.herokuapp.com/success.php",
-            "failure" => "https://isidro-grvt-mp-commerce-php.herokuapp.com/failure.php",
-            "pending" => "https://isidro-grvt-mp-commerce-php.herokuapp.com/pending.php"
-        );
-        $preference->auto_return = "approved";
-        $preference->notification_url = "https://isidro-grvt-mp-commerce-php.herokuapp.com/webhook.php";
-        $preference->external_reference = "isidro@gruvit.com.ar";
-        $preference->payment_methods = array(
-            "excluded_payment_methods" => array(
-              array("id" => "amex")
-            ),
-            "excluded_payment_types" => array(
-              array("id" => "atm")
-            ),
-            "installments" => 6
-          );
-
-        $preference->payer = $payer;
-        $preference->items = array($item);
-        $preference->save();
-    ?>
     <meta name="viewport" content="width=1024">
     <title>Tienda e-commerce</title>
 
@@ -137,7 +76,7 @@
 
                                     <button class="as-filter-button" aria-expanded="true" aria-controls="as-search-filters" type="button">
                                         <h2 class=" as-filter-button-text">
-                                            Smartphones
+                                            Pago fallido
                                         </h2>
                                     </button>
 
@@ -146,54 +85,7 @@
 
                             </div>
                         </div>
-                        <div class="as-accessories-results  as-search-desktop">
-                            <div class="width:60%">
-                                <div class="as-producttile-tilehero with-paddlenav " style="float:left;">
-                                    <div class="as-dummy-container as-dummy-img">
-
-                                        <img src="./assets/wireless-headphones" class="ir ir item-image as-producttile-image  " style="max-width: 70%;max-height: 70%;"alt="" width="445" height="445">
-                                    </div>
-                                    <div class="images mini-gallery gal5 ">
-                                    
-
-                                        <div class="as-isdesktop with-paddlenav with-paddlenav-onhover">
-                                            <div class="clearfix image-list xs-no-js as-util-relatedlink relatedlink" data-relatedlink="6|Powerbeats3 Wireless Earphones - Neighborhood Collection - Brick Red|MPXP2">
-                                                <div class="as-tilegallery-element as-image-selected">
-                                                    <div class=""></div>
-                                                    <img src="./assets/003.jpg" class="ir ir item-image as-producttile-image" alt="" width="445" height="445" style="content:-webkit-image-set(url(<?php echo $_POST['img'] ?>) 2x);">
-                                                </div>
-                                                
-                                            </div>
-
-                                            
-                                        </div>
-
-                                        
-
-                                    </div>
-
-                                </div>
-                                <div class="as-producttile-info" style="float:left;min-height: 168px;">
-                                    <div class="as-producttile-titlepricewraper" style="min-height: 128px;">
-                                        <div class="as-producttile-title">
-                                            <h3 class="as-producttile-name">
-                                                <p class="as-producttile-tilelink">
-                                                    <span data-ase-truncate="2"><?php echo $_POST['title'] ?></span>
-                                                </p>
-
-                                            </h3>
-                                        </div>
-                                        <h3 >
-                                            <?php echo "$" .$_POST['price']; ?>
-                                        </h3>
-                                        <h3 >
-                                            <?php echo  $_POST['unit']; ?>
-                                        </h3>
-                                    </div>
-                                    <a href="<?php echo $preference->init_point; ?>">Pagar la compra</a>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -208,5 +100,4 @@
         </div>
 
 </div><div class="mp-mercadopago-checkout-wrapper" style="z-index:-2147483647;display:block;background:rgba(0, 0, 0, 0.7);border:0;overflow:hidden;visibility:hidden;margin:0;padding:0;position:fixed;left:0;top:0;width:0;opacity:0;height:0;transition:opacity 220ms ease-in;"> <svg class="mp-spinner" viewBox="25 25 50 50"> <circle class="mp-spinner-path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"></circle> </svg> </div><div class="mp-mercadopago-checkout-wrapper" style="z-index:-2147483647;display:block;background:rgba(0, 0, 0, 0.7);border:0;overflow:hidden;visibility:hidden;margin:0;padding:0;position:fixed;left:0;top:0;width:0;opacity:0;height:0;transition:opacity 220ms ease-in;"> <svg class="mp-spinner" viewBox="25 25 50 50"> <circle class="mp-spinner-path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"></circle> </svg> </div><div class="mp-mercadopago-checkout-wrapper" style="z-index:-2147483647;display:block;background:rgba(0, 0, 0, 0.7);border:0;overflow:hidden;visibility:hidden;margin:0;padding:0;position:fixed;left:0;top:0;width:0;opacity:0;height:0;transition:opacity 220ms ease-in;"> <svg class="mp-spinner" viewBox="25 25 50 50"> <circle class="mp-spinner-path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"></circle> </svg> </div><div class="mp-mercadopago-checkout-wrapper" style="z-index:-2147483647;display:block;background:rgba(0, 0, 0, 0.7);border:0;overflow:hidden;visibility:hidden;margin:0;padding:0;position:fixed;left:0;top:0;width:0;opacity:0;height:0;transition:opacity 220ms ease-in;"> <svg class="mp-spinner" viewBox="25 25 50 50"> <circle class="mp-spinner-path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"></circle> </svg> </div><div class="mp-mercadopago-checkout-wrapper" style="z-index:-2147483647;display:block;background:rgba(0, 0, 0, 0.7);border:0;overflow:hidden;visibility:hidden;margin:0;padding:0;position:fixed;left:0;top:0;width:0;opacity:0;height:0;transition:opacity 220ms ease-in;"> <svg class="mp-spinner" viewBox="25 25 50 50"> <circle class="mp-spinner-path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"></circle> </svg> </div><div class="mp-mercadopago-checkout-wrapper" style="z-index:-2147483647;display:block;background:rgba(0, 0, 0, 0.7);border:0;overflow:hidden;visibility:hidden;margin:0;padding:0;position:fixed;left:0;top:0;width:0;opacity:0;height:0;transition:opacity 220ms ease-in;"> <svg class="mp-spinner" viewBox="25 25 50 50"> <circle class="mp-spinner-path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"></circle> </svg> </div><div id="ac-gn-viewport-emitter"> </div>
-<script src="https://www.mercadopago.com/v2/security.js" view="item"></script>
 </body></html>
