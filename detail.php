@@ -59,6 +59,8 @@
 
         $preference->payer = $payer;
         $preference->items = array($item);
+        var_dump($preference);
+        die();
         $preference->save();
     ?>
     <meta name="viewport" content="width=1024">
