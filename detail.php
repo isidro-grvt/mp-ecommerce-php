@@ -601,6 +601,7 @@
                                         </h3>
                                     </div>
                                     <a href="<?php echo $preference->init_point; ?>">Pagar la compra</a>
+                                    <input type="hidden" name="preference-id" value="<?php echo $preference->id; ?>">
                                 </div>
                             </div>
                         </div>
