@@ -1,4 +1,6 @@
 <?php
 error_log("Webhook!!!");
-error_log(json_encode($_POST));
+$data = json_decode(file_get_contents('php://input'), true);
+print_r($data);
+error_log($data);
 ?>
