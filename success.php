@@ -90,7 +90,7 @@
                                 <div class="as-producttile-info" style="float:left;min-height: 168px;">
                                     <div class="as-producttile-titlepricewraper" style="min-height: 128px;">
                                         <h3 >
-                                            Id forma de pago: <?php echo "$" .$_GET['payment_method_id']; ?>
+                                            Forma de pago: <?php echo $_GET['payment_type']; ?>
                                         </h3>
                                         <h3 >
                                             External reference: <?php echo  $_GET['external_reference']; ?>
