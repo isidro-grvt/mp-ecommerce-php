@@ -46,7 +46,7 @@
         "failure" => "https://isidro-grvt-mp-commerce-php.herokuapp.com/failure.php",
         "pending" => "https://isidro-grvt-mp-commerce-php.herokuapp.com/pending.php"
     );
-    $preference->auto_return = "all";
+    $preference->auto_return = "approved";
     $preference->notification_url = "https://isidro-grvt-mp-commerce-php.herokuapp.com/webhook.php";
     $preference->external_reference = "isidro@gruvit.com.ar";
     $preference->payment_methods = array(
